@@ -10,6 +10,8 @@ public class NavigationToolBar extends AbstractPage {
     private By eventsButton = By.xpath("//ul[@class='evnt-navigation navbar-nav']/li[2]/a");
     private By videoButton = By.xpath("//ul[@class='evnt-navigation navbar-nav']/li[3]/a");
     private By calendarButton= By.xpath("//ul[@class='evnt-navigation navbar-nav']/li[1]/a");
+    private By loader = By.className("evnt-loader");
+
 
     public NavigationToolBar(WebDriver driver) {
         super(driver);
@@ -17,12 +19,14 @@ public class NavigationToolBar extends AbstractPage {
 
     public EventsPage goToEvents() {
         driver.findElement(eventsButton).click();
+        this.waitForElementToBeGone(loader);
         logger.info("Events are opened");
         return new EventsPage(driver);
     }
 
     public TalksLibraryPage goToVideo() {
         driver.findElement(videoButton).click();
+        this.waitForElementToBeGone(loader);
         return new TalksLibraryPage(driver);
     }
 }
