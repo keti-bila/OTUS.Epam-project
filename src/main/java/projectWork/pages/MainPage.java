@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class MainPage extends AbstractPage{
+public class MainPage extends AbstractPage {
     private static Logger logger = LogManager.getLogger(MainPage.class);
     private By cookieButton = By.id("onetrust-accept-btn-handler");
 
@@ -35,8 +35,7 @@ public class MainPage extends AbstractPage{
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(cookieButton));
             return true;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
     }

@@ -16,7 +16,7 @@ public class WebDriverHooks {
     public void setDriver() {
         this.driver = WebDriverFactory.createDriver(Browsers.getBrowserByString(cfg.browser()));
         logger.info("Driver is initialised");
-        if (this.driver !=null) {
+        if (this.driver != null) {
             this.driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
             this.driver.manage().window().maximize();
         }
@@ -42,7 +42,7 @@ public class WebDriverHooks {
     }
 
     public void clearCookies() {
-        if(driver == null) {
+        if (driver == null) {
             throw new IllegalStateException("Driver should be initialised");
         }
         driver.manage().deleteAllCookies();

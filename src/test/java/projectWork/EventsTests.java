@@ -11,8 +11,6 @@ import projectWork.pages.MainPage;
 import projectWork.util.BaseHooks;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class EventsTests extends BaseHooks {
@@ -47,7 +45,7 @@ public class EventsTests extends BaseHooks {
                 .navigationToolbar().goToEvents();
         List<EventCardPage> listOfCards = eventsPage.eventCards();
         for (EventCardPage card : listOfCards) {
-            Assert.assertFalse(card.checkIfDateIsInPast(), "Date of upcoming event is earlier than current date");
+            Assert.assertFalse(card.isEventDateInPast(), "Date of upcoming event is earlier than current date");
         }
     }
 
@@ -59,7 +57,7 @@ public class EventsTests extends BaseHooks {
         Assert.assertEquals(eventsPage.numberOfEventCards(), eventsPage.pastEventsCounterValue(), "Number of event cards is not equals event counter");
         List<EventCardPage> listOfCards = eventsPage.eventCards();
         for (EventCardPage card : listOfCards) {
-            Assert.assertTrue(card.checkIfDateIsInPast(), "Date of past event is after current date");
+            Assert.assertTrue(card.isEventDateInPast(), "Date of past event is after current date");
         }
     }
 }

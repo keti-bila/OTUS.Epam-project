@@ -4,10 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class EventsPage extends AbstractPage {
@@ -37,7 +34,6 @@ public class EventsPage extends AbstractPage {
     }
 
     public EventsPage goToPastEvents() {
-        actions.moveToElement(driver.findElement(pastEvents)).perform();
         driver.findElement(pastEvents).click();
         this.waitForElementToBeGone(loader);
         return this;

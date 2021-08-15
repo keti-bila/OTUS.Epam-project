@@ -3,7 +3,6 @@ package projectWork.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,7 +41,7 @@ public class EventCardPage extends AbstractPage {
         return element.findElement(cardSpeaker).isDisplayed();
     }
 
-    public boolean checkIfDateIsInPast() throws ParseException {
+    public boolean isEventDateInPast() throws ParseException {
         Date today = new Date();
         String date = this.getCardDate();
         if (date.contains(" - ")) {

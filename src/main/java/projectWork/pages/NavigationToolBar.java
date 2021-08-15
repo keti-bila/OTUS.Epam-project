@@ -9,7 +9,7 @@ public class NavigationToolBar extends AbstractPage {
     private Logger logger = LogManager.getLogger(NavigationToolBar.class);
     private By eventsButton = By.xpath("//ul[@class='evnt-navigation navbar-nav']/li[2]/a");
     private By videoButton = By.xpath("//ul[@class='evnt-navigation navbar-nav']/li[3]/a");
-    private By calendarButton= By.xpath("//ul[@class='evnt-navigation navbar-nav']/li[1]/a");
+    private By calendarButton = By.xpath("//ul[@class='evnt-navigation navbar-nav']/li[1]/a");
     private By loader = By.className("evnt-loader");
 
 
