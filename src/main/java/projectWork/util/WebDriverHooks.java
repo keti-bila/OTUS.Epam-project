@@ -29,11 +29,6 @@ public class WebDriverHooks {
         }
     }
 
-    public void restartDriver() {
-        this.shutDownDriver();
-        this.setDriver();
-    }
-
     public WebDriver getDriver() {
         if (driver == null) {
             throw new IllegalStateException("Driver should be initialised");

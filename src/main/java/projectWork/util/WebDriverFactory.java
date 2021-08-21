@@ -9,6 +9,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.opera.OperaOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import java.net.MalformedURLException;
+import java.net.URI;
 
 public class WebDriverFactory {
     public static WebDriver createDriver(Browsers type) {
@@ -41,5 +46,25 @@ public class WebDriverFactory {
             default:
                 return null;
         }
+    }
+
+    public static WebDriver createDriver() {
+        WebDriver driver = null;
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", "chrome");
+        capabilities.setCapability("browserVersion", "91.0");
+        capabilities.setCapability("enableVNC", true);
+        capabilities.setCapability("enableVideo", true);
+        capabilities.setCapability("enableLogs", true);
+        try {
+            driver = new RemoteWebDriver(
+                    URI.create("http://localhost:4444/wd/hub").toURL(),
+                    capabilities
+            );
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        return driver;
     }
 }

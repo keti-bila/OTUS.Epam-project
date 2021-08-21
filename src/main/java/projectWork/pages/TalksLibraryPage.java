@@ -54,6 +54,7 @@ public class TalksLibraryPage extends AbstractPage {
         WebElement lastTalkCard = listOfTalks.get(listOfTalks.size() - 1);
         actions.moveToElement(driver.findElement(footer)).perform();
         lastTalkCard.click();
+        waitForElementToBeGone(loader);
         return new TalkCardPage(driver);
     }
 
