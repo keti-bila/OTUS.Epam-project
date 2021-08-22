@@ -3,6 +3,7 @@ package projectWork.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class TalkCardPage extends AbstractPage {
     }
 
     public String getLocation() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(location));
         return driver.findElement(location).getText();
     }
 
