@@ -1,7 +1,9 @@
 package projectWork;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -12,10 +14,13 @@ import projectWork.util.BaseHooks;
 
 import java.util.ArrayList;
 
+@Epic("Talk library page testing")
+@Feature("Going to videos page and validating the data")
 public class VideoTests extends BaseHooks {
-    private static final Logger LOGGER = LogManager.getLogger(VideoTests.class);
 
-    @Test
+    @Test(description = "Open https://events.epam.com/, go to video page, apply filters, verify the lat card has information that was filtered")
+    @Story("Go to video page, apply filters, verify the lat card has information that was filtered")
+    @Description("Open https://events.epam.com/, go to video page, apply filters, verify the lat card has information that was filtered")
     public void filterVideosTest() {
         String category = "Testing";
         String location = "Belarus";
@@ -31,7 +36,9 @@ public class VideoTests extends BaseHooks {
         softAssert.assertTrue(talkCard.getListOfCategories().contains(category), "Category of talk card is not equal one in filter");
     }
 
-    @Test
+    @Test(description = "Open https://events.epam.com/, go to video page, enter keyword in search, verify all the card names have a keyword")
+    @Story("Go to video page, apply filters, enter keyword in search, verify all the card names have a keyword")
+    @Description("Open https://events.epam.com/, go to video page, enter keyword in search, verify all the card names have a keyword")
     public void searchTalksByKeywordTest() {
         String keyword = "QA";
         TalksLibraryPage talksLibraryPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()

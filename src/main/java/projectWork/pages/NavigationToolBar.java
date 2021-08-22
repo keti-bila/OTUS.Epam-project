@@ -1,5 +1,6 @@
 package projectWork.pages;
 
+import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
@@ -17,16 +18,19 @@ public class NavigationToolBar extends AbstractPage {
         super(driver);
     }
 
+    @Step("Go to events page")
     public EventsPage goToEvents() {
         driver.findElement(eventsButton).click();
         this.waitForElementToBeGone(loader);
-        logger.info("Events are opened");
+        logger.info("Events are open");
         return new EventsPage(driver);
     }
 
+    @Step("Go to video page")
     public TalksLibraryPage goToVideo() {
         driver.findElement(videoButton).click();
         this.waitForElementToBeGone(loader);
+        logger.info("Talks library is open");
         return new TalksLibraryPage(driver);
     }
 }

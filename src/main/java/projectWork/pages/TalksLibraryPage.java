@@ -1,5 +1,8 @@
 package projectWork.pages;
 
+import io.qameta.allure.Step;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TalksLibraryPage extends AbstractPage {
+    private Logger logger = LogManager.getLogger(TalksLibraryPage.class);
     private By loader = By.className("evnt-loader");
     private By footer = By.className("evnt-footer-wrapper");
     private By moreFilters = By.xpath("//span[.='More Filters']");
@@ -21,24 +25,31 @@ public class TalksLibraryPage extends AbstractPage {
         super(driver);
     }
 
+    @Step("Click more filters")
     public TalksLibraryPage chooseMoreFilters() {
         driver.findElement(moreFilters).click();
         waitForElementToBeGone(loader);
         return this;
     }
 
+    @Step("Filter by category")
     public TalksLibraryPage filterByCategory(String category) {
         applyFilter(categoryFilter, category);
+        logger.info("Filter by category {} is applied", category);
         return this;
     }
 
+    @Step("Filter by location")
     public TalksLibraryPage filterByLocation(String location) {
         applyFilter(locationFilter, location);
+        logger.info("Filter by location {} is applied", location);
         return this;
     }
 
+    @Step("Filter by language")
     public TalksLibraryPage filterByLanguage(String language) {
         applyFilter(languageFilter, language);
+        logger.info("Filter by language {} is applied", language);
         return this;
     }
 
@@ -49,21 +60,26 @@ public class TalksLibraryPage extends AbstractPage {
         waitForElementToBeGone(loader);
     }
 
+    @Step("Open last talk card")
     public TalkCardPage openLastTalkCard() {
         List<WebElement> listOfTalks = driver.findElements(talkCardName);
         WebElement lastTalkCard = listOfTalks.get(listOfTalks.size() - 1);
         actions.moveToElement(driver.findElement(footer)).perform();
         lastTalkCard.click();
         waitForElementToBeGone(loader);
+        logger.info("Last Talk card is open");
         return new TalkCardPage(driver);
     }
 
+    @Step("Searching by keyword")
     public TalksLibraryPage searchByKeyword(String keyword) {
         driver.findElement(searchInput).sendKeys(keyword);
         waitForElementToBeGone(loader);
+        logger.info("Search word {} is entered", keyword);
         return this;
     }
 
+    @Step("Get list of talk names")
     public ArrayList<String> getListOfTalkNames() {
         ArrayList<String> listOfTalkNames = new ArrayList<>();
         List<WebElement> talkNamesElements = driver.findElements(talkCardName);

@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="VideoTestSuite" parallel="methods" thread-count="2" >
+    <test name="filterVideosTest" >
+        <classes>
+            <class name="projectWork.VideoTests"/>
+        </classes>
+    </test>
+
+    <test name="searchTalksByKeywordTest" >
+        <classes>
+            <class name="projectWork.EventsTests"/>
+        </classes>
+    </test>
+</suite>

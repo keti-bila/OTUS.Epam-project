@@ -1,7 +1,9 @@
 package projectWork;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -13,17 +15,22 @@ import projectWork.util.BaseHooks;
 import java.text.ParseException;
 import java.util.List;
 
+@Epic("Events page testing")
+@Feature("Going to events page and validating the data")
 public class EventsTests extends BaseHooks {
-    private static final Logger LOGGER = LogManager.getLogger(EventsTests.class);
 
-    @Test
+    @Test(description = "Open https://events.epam.com/, go to events page, verify the number of events in counter is equal to number of event cards")
+    @Story("Go to events page, verify the number of events in counter is equal to number of event cards")
+    @Description("Open https://events.epam.com/, go to events page, verify the number of events in counter is equal to number of event cards")
     public void counterOfEventsTest() {
         EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents();
         Assert.assertEquals(eventsPage.numberOfEventCards(), eventsPage.upcomingEventsCounterValue(), "Number of event cards is not equals event counter");
     }
 
-    @Test
+    @Test(description = "Open https://events.epam.com/, go to events page, go to past events, verify all the data is available in card")
+    @Story("Go to events page, go to past events, verify all the data is available in card")
+    @Description("Open https://events.epam.com/, go to events page, go to past events, verify all the data is available in card")
     public void pastEventsTest() {
         EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents().goToPastEvents();
@@ -39,7 +46,9 @@ public class EventsTests extends BaseHooks {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(description = "Open https://events.epam.com/, go to events page, verify the dates in cards are equal or later than today")
+    @Story("Go to events page, verify the dates in cards are equal or later than today")
+    @Description("Open https://events.epam.com/, go to events page, verify the dates in cards are equal or later than today")
     public void upcomingEventsDateTest() throws ParseException {
         EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents();
@@ -49,7 +58,9 @@ public class EventsTests extends BaseHooks {
         }
     }
 
-    @Test
+    @Test(description = "Open https://events.epam.com/, go to events page, go to past events, apply filter by location, verify the number of events in counter is equal to number of event cards")
+    @Story("Go to events page, go to past events, apply filter by location, verify the number of events in counter is equal to number of event cards")
+    @Description("Open https://events.epam.com/, go to events page, go to past events, apply filter by location, verify the number of events in counter is equal to number of event cards")
     public void filterPastEventsByLocationTest() throws ParseException {
         EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents().goToPastEvents();
