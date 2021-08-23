@@ -1,25 +1,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="EventsTestSuite" parallel="methods" thread-count="2" >
-    <test name="counterOfEventsTest" >
-        <classes>
-            <class name="projectWork.EventsTests"/>
-        </classes>
-    </test>
-
-    <test name="pastEventsTest" >
-        <classes>
-            <class name="projectWork.EventsTests"/>
-        </classes>
-    </test>
-
-    <test name="upcomingEventsDateTest" >
-        <classes>
-            <class name="projectWork.EventsTests"/>
-        </classes>
-    </test>
-
-    <test name="filterPastEventsByLocationTest" >
+<suite name="EventsTestSuite" parallel="classes" thread-count="2">
+    <test name="Events Page Tests">
         <classes>
             <class name="projectWork.EventsTests"/>
         </classes>
