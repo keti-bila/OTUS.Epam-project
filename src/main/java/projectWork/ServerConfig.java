@@ -8,4 +8,7 @@ public interface ServerConfig extends Config {
 
     @DefaultValue("chrome")
     String browser();
+
+    @DefaultValue("false")
+    Boolean isDriverRemote();
 }

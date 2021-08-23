@@ -14,14 +14,11 @@ public class WebDriverHooks {
     private ServerConfig cfg = ConfigFactory.create(ServerConfig.class, System.getProperties(), System.getenv());
 
     public void setDriver() {
-/**
- * Initialize driver for local test run (comment or uncomment necessary option)
- */
-        this.driver = WebDriverFactory.createDriver(Browsers.getBrowserByString(cfg.browser()));
-/**
- * Initialize driver for remote test run (comment or uncomment necessary option)
- */
-        //        this.driver = WebDriverFactory.createDriver();
+        if (cfg.isDriverRemote()) {
+            this.driver = WebDriverFactory.createDriver();
+        } else {
+            this.driver = WebDriverFactory.createDriver(Browsers.getBrowserByString(cfg.browser()));
+        }
         logger.info("Driver is initialised");
         if (this.driver != null) {
             this.driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
