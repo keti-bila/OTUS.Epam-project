@@ -60,14 +60,14 @@ public class TalksLibraryPage extends AbstractPage {
         waitForElementToBeGone(loader);
     }
 
-    @Step("Open last talk card")
-    public TalkCardPage openLastTalkCard() {
+    @Step("Open first talk card")
+    public TalkCardPage openFirstTalkCard() {
         List<WebElement> listOfTalks = driver.findElements(talkCardName);
-        WebElement lastTalkCard = listOfTalks.get(listOfTalks.size() - 1);
+        WebElement firstTalkCard = listOfTalks.get(0);
         actions.moveToElement(driver.findElement(footer)).perform();
-        lastTalkCard.click();
+        firstTalkCard.click();
         waitForElementToBeGone(loader);
-        logger.info("Last Talk card is open");
+        logger.info("First Talk card is open");
         return new TalkCardPage(driver);
     }
 

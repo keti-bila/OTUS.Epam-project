@@ -18,9 +18,9 @@ import java.util.ArrayList;
 @Feature("Going to videos page and validating the data")
 public class VideoTests extends BaseHooks {
 
-    @Test(description = "Open https://events.epam.com/, go to video page, apply filters, verify the lat card has information that was filtered")
-    @Story("Go to video page, apply filters, verify the lat card has information that was filtered")
-    @Description("Open https://events.epam.com/, go to video page, apply filters, verify the lat card has information that was filtered")
+    @Test(description = "Open https://events.epam.com/, go to video page, apply filters, verify the first card has information that was filtered")
+    @Story("Go to video page, apply filters, verify the first card has information that was filtered")
+    @Description("Open https://events.epam.com/, go to video page, apply filters, verify the first card has information that was filtered")
     public void filterVideosTest() {
         String category = "Testing";
         String location = "Belarus";
@@ -29,7 +29,7 @@ public class VideoTests extends BaseHooks {
                 .navigationToolbar().goToVideo();
         TalkCardPage talkCard = talksLibraryPage.chooseMoreFilters().filterByCategory(category)
                 .filterByLocation(location).filterByLanguage(language)
-                .openLastTalkCard();
+                .openFirstTalkCard();
         SoftAssert softAssert = new SoftAssert();
         softAssert.assertTrue(talkCard.getLocation().contains(location), "Location of talk card is not equal one in filter");
         softAssert.assertEquals(talkCard.getLanguage(), language, "Language of talk card is not equal one in filter");
