@@ -28,14 +28,14 @@ public class MainPage extends AbstractPage {
 
     @Step("Cookies are accepted")
     public MainPage acceptCookie() {
-        if (cookieMessageVisible(cookieButton)) {
+        if (cookieMessageVisible()) {
             driver.findElement(cookieButton).click();
             logger.info("Cookies are accepted");
         }
         return this;
     }
 
-    private boolean cookieMessageVisible(By selector) {
+    private boolean cookieMessageVisible() {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(cookieButton));
             return true;

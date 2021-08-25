@@ -25,7 +25,7 @@ public class VideoTests extends BaseHooks {
         String category = "Testing";
         String location = "Belarus";
         String language = "ENGLISH";
-        TalksLibraryPage talksLibraryPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
+        TalksLibraryPage talksLibraryPage = MainPage.open(getCfg().homepage(), getDriver()).acceptCookie()
                 .navigationToolbar().goToVideo();
         TalkCardPage talkCard = talksLibraryPage.chooseMoreFilters().filterByCategory(category)
                 .filterByLocation(location).filterByLanguage(language)
@@ -41,7 +41,7 @@ public class VideoTests extends BaseHooks {
     @Description("Open https://events.epam.com/, go to video page, enter keyword in search, verify all the card names have a keyword")
     public void searchTalksByKeywordTest() {
         String keyword = "QA";
-        TalksLibraryPage talksLibraryPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
+        TalksLibraryPage talksLibraryPage = MainPage.open(getCfg().homepage(), getDriver()).acceptCookie()
                 .navigationToolbar().goToVideo();
         talksLibraryPage.searchByKeyword(keyword);
         ArrayList<String> listOfNames = talksLibraryPage.getListOfTalkNames();

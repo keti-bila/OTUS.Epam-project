@@ -23,7 +23,7 @@ public class EventsTests extends BaseHooks {
     @Story("Go to events page, verify the number of events in counter is equal to number of event cards")
     @Description("Open https://events.epam.com/, go to events page, verify the number of events in counter is equal to number of event cards")
     public void counterOfEventsTest() {
-        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
+        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents();
         Assert.assertEquals(eventsPage.numberOfEventCards(), eventsPage.upcomingEventsCounterValue(), "Number of event cards is not equals event counter");
     }
@@ -32,7 +32,7 @@ public class EventsTests extends BaseHooks {
     @Story("Go to events page, go to past events, verify all the data is available in card")
     @Description("Open https://events.epam.com/, go to events page, go to past events, verify all the data is available in card")
     public void pastEventsTest() {
-        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
+        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents().goToPastEvents();
         SoftAssert softAssert = new SoftAssert();
         List<EventCardPage> listOfCards = eventsPage.eventCards();
@@ -50,7 +50,7 @@ public class EventsTests extends BaseHooks {
     @Story("Go to events page, verify the dates in cards are equal or later than today")
     @Description("Open https://events.epam.com/, go to events page, verify the dates in cards are equal or later than today")
     public void upcomingEventsDateTest() throws ParseException {
-        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
+        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents();
         List<EventCardPage> listOfCards = eventsPage.eventCards();
         for (EventCardPage card : listOfCards) {
@@ -62,7 +62,7 @@ public class EventsTests extends BaseHooks {
     @Story("Go to events page, go to past events, apply filter by location, verify the number of events in counter is equal to number of event cards")
     @Description("Open https://events.epam.com/, go to events page, go to past events, apply filter by location, verify the number of events in counter is equal to number of event cards")
     public void filterPastEventsByLocationTest() throws ParseException {
-        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getWebDriverHooks().getDriver()).acceptCookie()
+        EventsPage eventsPage = MainPage.open(getCfg().homepage(), getDriver()).acceptCookie()
                 .navigationToolbar().goToEvents().goToPastEvents();
         eventsPage.filterByLocation("Canada");
         Assert.assertEquals(eventsPage.numberOfEventCards(), eventsPage.pastEventsCounterValue(), "Number of event cards is not equals event counter");
